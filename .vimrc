@@ -27,6 +27,23 @@ function! ResizePane(amount="-5")
     endif
 endfunction
 
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
 " #settings ish"
 set linespace=10
 set mouse=a
@@ -60,15 +77,11 @@ set cpoptions+=n
 set showbreak=...
 set laststatus=2
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
 
 " #globalvars ish
 let g:conceallevel = 0
 let &t_EI = "\e[2 q"
-let &t_SI = "\e[6 q"
+let &t_SI = "\e[5 q"
 
 " #autcmd ish
 autocmd BufRead,BufNewFile *.toml set filetype=toml
@@ -86,22 +99,19 @@ tmap <expr> <C-d> '<C-\><C-n>' . CloseIt() . '<CR>'
 
 " Core
 inoremap <S-CR> <Esc>
-nmap \ :Vexplore<CR>:set number<CR>:set nowrap<CR>
+nmap \ :call ToggleNetrw()<CR>
 nmap <silent> <leader><leader>h :noh<CR>
 nmap <expr> <C-e><C-e> CloseIt() . '<CR>'
 nmap <C-e><C-w> <cmd>w!<CR>
 nmap <C-e><C-q> <cmd>q!<CR>
+nmap <leader><leader>w <cmd>w!<CR>
+nmap <leader><leader>q <cmd>q!<CR>
 nmap <C-w><C-q> :w!<CR>:q!<CR>
 nnoremap ] :cnext<CR>
 nnoremap [ :cprevious<CR>
 nmap <Tab> :BufferNext<CR>
 nmap <S-Tab> :BufferPrevious<CR>
 inoremap <C-v> <C-r>+
-
-""
-" Normal remaps
-"
-nnoremap <Esc> <Nop>
 
 " window stuff
 nnoremap <expr> <leader>- ResizePane("-5") . '<CR>'
