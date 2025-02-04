@@ -2,7 +2,6 @@ filetype plugin indent on
 let mapleader=" "
 let maplocalleader="\\"
 syntax on
-colorscheme retrobox
 
 function! BuffJump()
     ls
@@ -30,7 +29,8 @@ endfunction
 
 " #settings ish"
 set linespace=10
-set mouse=unnamed
+set mouse=a
+set clipboard=unnamed
 set nocompatible
 set showmatch
 set expandtab
@@ -60,11 +60,15 @@ set cpoptions+=n
 set showbreak=...
 set laststatus=2
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 " #globalvars ish
 let g:conceallevel = 0
-let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+let &t_SI = "\e[6 q"
 
 " #autcmd ish
 autocmd BufRead,BufNewFile *.toml set filetype=toml
