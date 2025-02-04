@@ -33,3 +33,5 @@ if command -v fzf 2>&1 >/dev/null; then
     eval "$(fzf --bash)"
 fi
 
+set vi-cmd-mode-string "\1\e[2 q\2"
+set vi-ins-mode-string "\1\e[5 q\2"
