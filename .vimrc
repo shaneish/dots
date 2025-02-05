@@ -1,6 +1,7 @@
 filetype plugin indent on
 let mapleader=" "
 let maplocalleader="\\"
+colorscheme quiet
 syntax on
 
 function! BuffJump()
@@ -45,6 +46,7 @@ function! ToggleNetrw()
 endfunction
 
 " #settings ish"
+set termguicolors
 set linespace=10
 set mouse=a
 set clipboard=unnamed
@@ -78,8 +80,10 @@ set showbreak=...
 set laststatus=2
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+highlight TabLineSel guifg=#f6cd61 gui=bold
+highlight TabLineFill guifg=#f6cd61 gui=bold
+
 " #globalvars ish
-let g:conceallevel = 0
 let &t_EI = "\e[2 q"
 let &t_SI = "\e[5 q"
 
@@ -162,7 +166,20 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-k> <Up>
 imap <C-j> <Down>
+imap '' ''<Esc>i
+imap "" ""<Esc>i
+imap (( ()<Esc>i
+imap [[ []<Esc>i
+imap {{ {}<Esc>i
+imap << <><Esc>i
 
 " Visual remaps
 xnoremap < <gv
 xnoremap > >gv
+xnoremap S' <Esc>`<i'<Esc>`>la'<Esc>`<
+xnoremap S" <Esc>`<i"<Esc>`>la"<Esc>`<
+xnoremap S) <Esc>`<i(<Esc>`>la)<Esc>`<
+xnoremap S] <Esc>`<i[<Esc>`>la]<Esc>`<
+xnoremap S} <Esc>`<i{<Esc>`>la}<Esc>`<
+xnoremap S> <Esc>`<i<<Esc>`>la><Esc>`<
+xnoremap Sd <Esc>`<x`>hx`<v`>hh
