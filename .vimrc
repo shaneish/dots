@@ -182,4 +182,4 @@ xnoremap S) <Esc>`<i(<Esc>`>la)<Esc>`<
 xnoremap S] <Esc>`<i[<Esc>`>la]<Esc>`<
 xnoremap S} <Esc>`<i{<Esc>`>la}<Esc>`<
 xnoremap S> <Esc>`<i<<Esc>`>la><Esc>`<
-xnoremap Sd <Esc>`<x`>hx`<v`>hh
+xnoremap Sd <Esc>`<x`>x`<v`>h
