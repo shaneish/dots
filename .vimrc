@@ -83,9 +83,13 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:
 highlight TabLineSel guifg=#f6cd61 gui=bold
 highlight TabLineFill guifg=#f6cd61 gui=bold
 
-" #globalvars ish
+" #cursor stuff
 let &t_EI = "\e[2 q"
 let &t_SI = "\e[5 q"
+augroup myCmds
+    au!
+    autocmd VimEnter * silent !echo -ne "\\e[2 q"
+augroup END
 
 " #autcmd ish
 autocmd BufRead,BufNewFile *.toml set filetype=toml
