@@ -49,7 +49,7 @@ endfunction
 set termguicolors
 set linespace=10
 set mouse=a
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nocompatible
 set showmatch
 set expandtab
@@ -129,8 +129,6 @@ nnoremap <C-j> }zz
 nnoremap <C-k> {zz
 nnoremap <C-h> gezz
 nnoremap <C-l> wzz
-nnoremap j jzz
-nnoremap k kzz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <leader>l g_
@@ -141,8 +139,6 @@ xnoremap <C-j> }zz
 xnoremap <C-k> {zz
 xnoremap <C-h> bzz
 xnoremap <C-l> ezz
-xnoremap j jzz
-xnoremap k kzz
 xnoremap n nzz
 xnoremap N Nzz
 xnoremap <leader>l g_
@@ -167,6 +163,7 @@ imap <C-l> <Right>
 imap <C-k> <Up>
 imap <C-j> <Down>
 imap '' ''<Esc>i
+imap `` ``<Esc>i
 imap "" ""<Esc>i
 imap (( ()<Esc>i
 imap [[ []<Esc>i
@@ -177,9 +174,27 @@ imap << <><Esc>i
 xnoremap < <gv
 xnoremap > >gv
 xnoremap S' <Esc>`<i'<Esc>`>la'<Esc>`<
+xnoremap S` <Esc>`<i`<Esc>`>la`<Esc>`<
 xnoremap S" <Esc>`<i"<Esc>`>la"<Esc>`<
 xnoremap S) <Esc>`<i(<Esc>`>la)<Esc>`<
 xnoremap S] <Esc>`<i[<Esc>`>la]<Esc>`<
 xnoremap S} <Esc>`<i{<Esc>`>la}<Esc>`<
 xnoremap S> <Esc>`<i<<Esc>`>la><Esc>`<
-xnoremap Sd <Esc>`<x`>hx`<v`>hh
+xnoremap S<Space> <Esc>`<i<Space><Esc>`>la<Space><Esc>`<
+xnoremap Sv' <Esc>`<i'<Esc>`>la'<Esc>v`<
+xnoremap Sv` <Esc>`<i`<Esc>`>la`<Esc>v`<
+xnoremap Sv" <Esc>`<i"<Esc>`>la"<Esc>v`<
+xnoremap Sv) <Esc>`<i(<Esc>`>la)<Esc>v`<
+xnoremap Sv] <Esc>`<i[<Esc>`>la]<Esc>v`<
+xnoremap Sv} <Esc>`<i{<Esc>`>la}<Esc>v`<
+xnoremap Sv> <Esc>`<i<<Esc>`>la><Esc>v`<
+xnoremap Sv<Space> <Esc>`<i<Space><Esc>`>la<Space><Esc>v`<
+xnoremap Svv <Esc>`<hv`>l
+xnoremap Sr<Space> <Esc>`<r<Space>`>r<Space>v`<
+xnoremap Sr' <Esc>`<r'`>r'v`<
+xnoremap Sr` <Esc>`<r``>r`v`<
+xnoremap Sr" <Esc>`<r"`>r"v`<
+xnoremap Sr) <Esc>`<r(`>r)v`<
+xnoremap Sr] <Esc>`<r[`>r]v`<
+xnoremap Sr} <Esc>`<r{`>r}v`<
+xnoremap Sr> <Esc>`<r<`>r>v`<

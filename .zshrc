@@ -31,7 +31,10 @@ if command -v fzf 2>&1 >/dev/null; then
     eval "$(fzf --zsh)"
 fi
 
-# Change cursor with support for inside/outside tmux
+if command -v bhop 2>&1 >/dev/null; then
+    source $HOME/.config/bhop/scripts/runner.zsh
+fi
+
 function _set_cursor() {
     if [[ $TMUX = '' ]]; then
         echo -ne $1
@@ -51,3 +54,4 @@ function zle-keymap-select {
     fi
 }
 zle -N zle-keymap-select
+

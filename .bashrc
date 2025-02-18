@@ -25,13 +25,20 @@ alias EDITOR='vim'
 
 export PATH="/usr/local/sbin:$PATH:$HOME/.cargo/bin:$HOME/.fzf/bin:$HOME/.local/bin"
 
-PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]$\[\033[00m\] '
+cwd=$(pwd | sed "s|^$HOME|~|")
+PROMPT_COMMAND='PS1_CMD1="$cwd $(git branch --show-current 2>/dev/null) $(basename $VIRTUAL_ENV 2>/dev/null)"'; PS1='$(printf "%${COLUMNS}s\n" "${PS1_CMD1}  ") > '
 
 set -o vi
+set show-mode-in-prompt on
 
 if command -v fzf 2>&1 >/dev/null; then
     eval "$(fzf --bash)"
 fi
 
-set vi-cmd-mode-string "\1\e[2 q\2"
-set vi-ins-mode-string "\1\e[5 q\2"
+if command -v bhop 2>&1 >/dev/null; then
+    source $HOME/.config/bhop/scripts/runner.sh
+fi
+
+if command -v cargo 2>&1 >/dev/null; then
+    source $HOME/.cargo/env
+fi
