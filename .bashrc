@@ -42,8 +42,19 @@ yellow=$(tput setaf 3)
 reset=$(tput sgr0)
 PROMPT_COMMAND='PS1_CMD1="$yellow$(pwd | sed "s|^$HOME|~|") $(git branch --show-current 2>/dev/null) $(basename $VIRTUAL_ENV 2>/dev/null)"'; PS1='$(printf "%${COLUMNS}s\n" "${PS1_CMD1}  ")$(_user_prompt) > $reset'
 
+function _set_cursor() {
+    if [[ $TMUX = '' ]]; then
+        echo -ne $1
+    else
+        echo -ne "\ePtmux;\e\e$1\e\\"
+    fi
+}
+
 set -o vi
+set editing-mode vi
 set show-mode-in-prompt on
+set vi-cmd-mode-string $(_set_cursor "\1\e[2 q\2")
+set vi-ins-mode-string $(_set_cursor "\1\e[5 q\2")
 
 if command -v fzf 2>&1 >/dev/null; then
     eval "$(fzf --bash)"

@@ -40,6 +40,10 @@ if command -v bhop 2>&1 >/dev/null; then
     source $HOME/.config/bhop/scripts/runner.zsh
 fi
 
+if command -v cargo 2>&1 >/dev/null; then
+    source $HOME/.cargo/env
+fi
+
 export PROMPT_INFO=""
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUAL_ENV=""
